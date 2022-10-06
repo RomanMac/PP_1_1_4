@@ -15,7 +15,7 @@ public class Util {
     private static Statement stmt;
     private static ResultSet rs;
 
-    public static void main(String args[]) {
+    public Util() {
         String query = "select count(*) from users";
 
         try {
@@ -34,14 +34,22 @@ public class Util {
             sqlEx.printStackTrace();
         } finally {
 
-            try { conn.close(); } catch(SQLException ignored) { }
-            try { stmt.close(); } catch(SQLException ignored) { }
-            try { rs.close();
-            } catch(SQLException ignored) {
+            try {
+                conn.close();
+            } catch (SQLException ignored) {
+            }
+            try {
+                stmt.close();
+            } catch (SQLException ignored) {
+            }
+            try {
+                rs.close();
+            } catch (SQLException ignored) {
 
             }
         }
     }
+
 
     public static Connection getConnection() throws SQLException {
         conn = DriverManager.getConnection(url, user, password);

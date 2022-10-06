@@ -6,9 +6,9 @@ import jm.task.core.jdbc.service.UserServiceImpl;
 import java.sql.SQLException;
 
 public class Main {
-    private final static UserService userService;
+    private static UserService userService;
 
-    static {
+    public Main() {
         try {
             userService = new UserServiceImpl();
         } catch (SQLException e) {
@@ -19,10 +19,8 @@ public class Main {
     public static void main(String[] args) {
         userService.createUsersTable();
 
-        userService.saveUser("Jo", "Biden", (byte) 78);
+        userService.saveUser("Vova", "Putin", (byte) 78);
         userService.saveUser("Trump", "Donald", (byte) 74);
-        userService.saveUser("Barack", "Obama", (byte) 59);
-        userService.saveUser("Jord", "Bush", (byte) 74);
 
         userService.removeUserById(2);
 

@@ -26,7 +26,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
 
         try (Statement statement = conn.createStatement()) {
-            statement.executeUpdate("DELETE FROM users");
+            statement.executeUpdate("DROP TABLE IF EXISTS users");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,7 +76,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void cleanUsersTable() {
 
         try (Statement statement = conn.createStatement()) {
-            statement.executeUpdate("DELETE FROM USERS");
+            statement.executeUpdate("TRUNCATE TABLE users");
         } catch (SQLException e) {
             e.printStackTrace();
         }
