@@ -1,19 +1,14 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.service.UserService;
-import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 
-import java.sql.SQLException;
 
 public class Main {
-    private static UserService userService;
+    private static UserDao userService = null;
 
     public Main() {
-        try {
-            userService = new UserServiceImpl();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        userService = new UserDaoHibernateImpl();
     }
 
     public static void main(String[] args) {
